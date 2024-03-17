@@ -4,43 +4,17 @@ import From_app from "./form";
 import BlogList from "./list";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
-// const blogs = [
-//   {
-//     id: 1,
-//     title: "First Blog",
-//     content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-//   },
-//   {
-//     id: 2,
-//     title: "Second Blog",
-//     content:
-//       "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.",
-//   },
-//   {
-//     id: 3,
-//     title: "Third Blog",
-//     content:
-//       "Fusce consequat dui nec augue fermentum, vel fermentum libero fermentum.",
-//   },
-// ];
+import Login from "./Login";
 function App() {
-  const [blogs, setBlogs] = useState([]);
-  useEffect(() => {
-    fetch("https://blog-1-ki7f.onrender.com/blogs")
-      .then((res) => res.json())
-      .then((data) => {
-        setBlogs(data);
-      });
-  }, []);
   return (
     <div className="">
       <Router>
         <Routes>
           <Route
-            path="/"
+            path="/home"
             element={
               <div className="m-20">
-                <BlogList blogs={blogs} />
+                <BlogList />
                 <button
                   className="p-20 mt-20 group relative w-full flex justify-center
 py-2 px-4 border border-transparent text-sm font-medium
@@ -56,6 +30,7 @@ focus:ring-indigo-500"
               </div>
             }
           />
+          <Route path="/" element={<Login />} />
           <Route path="/form" element={<From_app />} />
         </Routes>
       </Router>
